@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: cursive;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      color: #1a1a1a;
+    }
+
+    #bg_image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+      filter: blur(10px) brightness(0.6);
+      z-index: -1;
+    }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+  padding-right: 70px;
+  z-index: 2;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Ensures content doesn't overflow */
+}
+.logo img {
+  height: 145px;
+  width:180px;
+  padding-left: 12px;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-links a {
+  display: inline-block;
+  font-family: cursive;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(0, 48, 96, 0.8));
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.nav-links a:hover {
+  background: linear-gradient(to right, #132231, #81adcd);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+    .main-card {
+      max-width: 500px;
+      margin-top: 50px;
+      margin: 120px auto 40px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: solid #bab3b3;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      color: #fff;
+    }
+
+    .main-card h1 {
+      font-size: 2.3rem;
+      margin-bottom: 40px;
+    }
+
+    .main-card h2 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      text-decoration: underline;
+      color: #cde4ff;
+    }
+
+    .developer {
+      margin-bottom: 1.2rem;
+    }
+
+    .name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .email {
+      color: #a7d8ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .email:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .main-card {
+        margin: 100px 20px;
+        padding: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .nav-links a {
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="photos/kalanjali/event2.jpg" id="bg_image">
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="photos/logofinal.png" alt="College Logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="clubpage.html">Clubs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-card">
+    <h1>About Us</h1>    
+    <h2>Meet the Team</h2>
+
+    <div class="developer">
+      <div class="name">Suvidha S Karkera</div>
+      <a class="email" href="mailto:nnm24is259@nmamit.in">nnm24is259@nmamit.in</a>
+    </div>
+
+    <div class="developer">
+      <div class="name">Swasthika Alva</div>
+      <a class="email" href="mailto:nnm24is260@nmamit.in">nnm24is260@nmamit.in</a>
+    </div>
+
+    <div class="developer">
+      <div class="name">Swathi</div>
+      <a class="email" href="mailto:nnm24is261@nmamit.in">nnm24is261@nmamit.in</a>
+    </div>
+
+    <div class="developer">
+      <div class="name">Tanmay D Suvarna</div>
+      <a class="email" href="mailto:nnm24is262@nmamit.in">nnm24is262@nmamit.in</a>
+    </div>
+
+    <div class="developer">
+      <div class="name">Tanmay P Shetty</div>
+      <a class="email" href="mailto:nnm24is263@nmamit.in">nnm24is263@nmamit.in</a>
+    </div>
+  </div>
+
+</body>
+</html>

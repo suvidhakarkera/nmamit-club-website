@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - NMAMIT Clubs</title>
+  <link rel="stylesheet" href="contactus.css" />
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+</head>
+<body>
+    <img src="photos/HomePageBackground.jpg" id="bg-image">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="photos/logofinal.png" alt="College Logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="clubpage.html">Clubs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contactus.html" class="active">Contact Us</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-section">
+    <div class="contact-box">
+      <h2>Contact Us</h2>
+      <p>Got a question, suggestion, or just want to say hi? We’d love to hear from you!</p>
+      <form class="contact-form" id="contact-form">
+        <input name="name" type="text" placeholder="Your Name" required />
+        <input name="email" type="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</body>
+<script>  
+  (function(){
+    emailjs.init("W2NbqryelMLYOqxAQ"); // Replace with your EmailJS public key
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_lyznd7c", "template_15uvbon", this)
+      .then(() => {
+        alert("Message sent successfully!");
+        this.reset();
+      }, (err) => {
+        alert("Failed to send message.");
+        console.error("Error:", err);
+      });
+  });
+</script>
+</html>

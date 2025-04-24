@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Clubs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <img src="photos/clubPageBg.jpg" id="bg_image" alt="clubpagebg">
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="photos/logofinal.png" alt="College Logo" />
+      </div>
+      <input type="text" id="searchBar" placeholder="Search for a club..." />
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="clubpage.html">Clubs</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="clubContainer">
+    <div class="carousel-wrapper">
+      <div id="noResultsMessage">No clubs found.</div>
+      <div class="carousel-container">
+        <button type="button" class="carousel-btn prev">&#10094;</button>
+        <div class="carousel-inner">
+          <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+        <button type="button" class="carousel-btn next">&#10095;</button>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

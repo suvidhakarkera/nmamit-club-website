@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Details</title>
+    <link rel="stylesheet" href="clubdetails.css">
+</head>
+<body>
+    <img src="photos/clicz/event11.webp" id="bg_image">
+    <!-- 🔹 Header -->
+    <header class="club-header">
+        <h1 id="club-name">Club Name</h1>
+    </header>
+
+    <!-- 🔹 Description -->
+    <section class="club-description">
+        <h2>About the Club</h2>
+        <p id="club-description">Club Description</p>
+    </section>
+
+    <!-- 🔹 Event Gallery -->
+    <section class="club-events">
+        <h2>Recent Events</h2>
+        <div class="event-images" id="event-gallery"></div>
+    </section>
+
+    <!-- 🔹 Footer -->
+    <footer class="club-footer">
+        <h2>Contact Us</h2>
+        <p id="club-contact">Email: example@example.com</p>
+        <div class="social-media">
+            <a href="#" id="club-instagram" target="_blank">Instagram</a>
+            <a href="#" id="club-linkedin" target="_blank">LinkedIn</a>
+            <a href="#" id="club-login" target="_blank">Login Form</a>
+            <a href="#" id="club-website" target="_blank">Our Website</a>
+        </div>
+        <a href="index.html" class="back-btn">Back to Home</a>
+        
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const club = urlParams.get('club');
+        const eventGallery = document.getElementById("event-gallery");
+        const folderPath = `photos/${club}/`; // Dynamic folder path
+        const imageCount = 20; // Max number of images you want to try loading
+
+        const clubData = {
+            clicz: {
+                name: "Clicz Club",
+                desc: "Clicz Club is a vibrant community of photography and videography enthusiasts dedicated to capturing the essence of college life. Our club plays a vital role in documenting events, celebrations, and memorable moments on campus. From technical workshops to creative projects, we provide opportunities for members to refine their skills while contributing to the college's visual storytelling. Whether you're a budding photographer or an experienced videographer, Clicz Club welcomes all who are passionate about capturing moments through the lens.",
+                contact: "Abishek: 88676 18536",
+                instagram: "https://www.instagram.com/cliczclubnmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSeUZey6WXU8z3A9hp8HnRLG8sDFBs_23iacRndQpeVXS00-Ug/closedform?fbclid=PAY2xjawJ1XD5leHRuA2FlbQIxMAABp_fuOgAnCvFpOSDsNm4ArdMDZq7zfhwtahKpCD3J3DUH3Hg1-5n-EYg1t-XB_aem_SHmZZdtlmBn7OyLfNAG6hQ",
+                linkedin:" https://www.linkedin.com/company/cliczclubnmamit/ "
+            },
+            taaleem: {
+                name: "Taaleem",
+                desc: `We're Taaleem, the theatre & drama club of NMAMIT, bringing acting to life through various expressive forms!
+                        At Taaleem, we bring a range of exciting and diverse events to life, both on-campus and at various external platforms.
+                        1. Stage Play: Experience the grandeur of traditional theatre as we bring compelling stories to life.
+                        2. Street Play: Engage with the community and raise awareness on social issues through vibrant, energetic performances.
+                        3. Mad Ad: Unleash your creativity and humor in this fun event where teams create and perform hilarious ads.
+                        4. Mime: Master the art of silent storytelling with expressive gestures and body language to convey deep messages.
+
+                        Join us for these exciting events and be a part of the dynamic world of Taaleem!
+
+                        Training and Activities
+                        To help you hone your skills, we conduct various activities including:
+                        - Spark Sessions: Interactive sessions designed to ignite your creativity and passion for theatre.
+                        - Workshops: Comprehensive workshops covering various aspects of theatre, from acting to direction and more.
+                        - General Meetings: Regular meetings filled with fun activities, games, and discussions to keep the spirit alive.`,
+                contact: "Vandya Kamath: 8197279793",
+                instagram: "https://www.instagram.com/team.taaleem?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:" https://docs.google.com/forms/d/e/1FAIpQLSc564RnOizstk4bgAsyaLgDxxm4iXM0Mf_BER63qhiUhKe-IA/viewform?fbclid=PAY2xjawJ1XtBleHRuA2FlbQIxMAABp0JElodw0ip28iK6Iv0tsmWazT-a9ySjpBJNnp-XJjojDGuNC-4cw6M4HTi__aem_8bI8nD5uf6TX5zNyPYrRTg "
+            },
+            cope: {
+                name: "COPE (Counselling & Outreach for Peer Empowerment)",
+                desc:`COPE is a mental health club dedicated to fostering well-being among students by promoting awareness, education, and peer support. Through workshops, events, and outreach programs, COPE creates a safe space for students to discuss mental health, access resources, and engage in initiatives that reduce stigma and encourage self-care.  
+
+                        Activities:
+                        - Organizing mental health awareness events, workshops, and campaigns  
+                        - Conducting peer support sessions and outreach programs  
+                        - Collaborating with professionals to provide guidance and resources  
+                        - Engaging students through newsletters, social media, and creative activities  
+                        - Advocating for mental health policies and support systems within institutions` ,
+                contact: "Ayush Shetty: 97418 27140",
+                instagram: "https://www.instagram.com/care_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:" forms.gle/jTU53C6A6mhPzdVw6 "
+            },
+            aura: {
+                name: "Aura",
+                desc: "Our vibrant club engages in heartwarming activities like: •Old age home visits •Special school visits •Orphanage visits •Raising awareness about important social issues.",
+                contact:"Rashmi:82173 67669",
+                instagram: "https://www.instagram.com/auraclubnmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:" forms.gle/jTU53C6A6mhPzdVw6 "
+            },
+            acm: {
+                name: "Association for Computing Machinery(acm)",
+                desc: "At the ACM Student Chapter, we are a community of curious and driven individuals passionate about advancing the field of computing. Our chapter serves as a hub for learning, innovation, and collaboration, where students can explore emerging technologies, enhance their technical skills, and connect with professionals. Through engaging events like coding competitions, tech talks, and project showcases, we aim to foster creativity and leadership in computing. Whether you’re new to tech or a seasoned coder, the ACM Student Chapter provides a supportive space to grow, learn, and make an impact.",
+                contact:"Neil:8792892008 ",
+                instagram: "https://www.instagram.com/acm_nitte?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website: "https://nmamit.acm.org/",
+                linkedin: "https://www.linkedin.com/authwall?trkInfo=AQF7LR3Bibv3YgAAAZZhP-L4IA-v1lb30VTuouzo5f0JQr4tRZtQzLPseSgse1JoczLQVdSnx_Ct4On-QnRrFOqq8G0ki9CXp26wQVdV-Ff4d1HIQ9_bgaN6d05s1P3sKkn5bjI=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Facm-nmamit%2F" 
+            }, 
+            hackerearth: {
+                name: "Hackerearth Hub",
+                desc: "We are one of the coding clubs of NMAMIT. We help students with DSA, Aptitude and other related concepts. We conduct weekly contests, workshops and events involving coding. ",
+                contact:"Pragathi S Rao : 8095717320",
+                instagram: "https://www.instagram.com/hackerearth_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website: "https://hackerearthhub-nmamit.vercel.app/",
+                linkedin: "https://www.linkedin.com/company/hackerearth-hub-nmamit/"
+            }, 
+            greymatter: {
+                name: "Grey Matter",
+                desc: "Grey Matter is the Quiz and Debate Club of NMAMIT. Bringing together a community of trivia enthusiasts and passionate debaters, Grey Matter has organised multiple successful events such as MELAS, Animanga, Point Blank and many more. Whether you’re a fact fiend, a debate genius, or just here for the vibes, there’s always a place for you in Grey Matter. ",
+                contact:"Abhishek : 91728 96955",
+                instagram: "https://www.instagram.com/greymatterqc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:" https://docs.google.com/forms/d/e/1FAIpQLScQ5hWSZHpO7NNpsqV6DLEByguW3vGpbFZvErYBZHbxoPkZ6Q/viewform?fbclid=PAY2xjawJ1Yw1leHRuA2FlbQIxMAABp5SYQGNlOEoJ-jLi1PudVftDTwWsr_rwoJxmh9QxFG7vaWN7TXy5DA_wBAd__aem_PsM9PLgPMriVwIWVKWNepQ "
+            }, 
+            kalaasangama: {
+                name: "Kalaasangama",
+                desc: `To be a safe heaven for creative minds in the Indian Classical art forms.
+                       To provide an opportunity to artists to interact with fellow minds and flourish their skill.
+                       To collaborate with other classical art forms.
+
+                        Activities:
+                        Bhajan
+                        Yakshagavishti ( intercollegiate yakshagana competition conducted in large scale)
+                        Classical dance
+                        Classical singing and instruments
+                        Yakshagana 
+                        Other folk forms`,
+                contact:"K S Srikrishna Rao : 9481661653",
+                instagram: "https://www.instagram.com/greymatterqc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website:"https://www.yakshagavishti.in/",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSd0CakIiPaKl4caCdmASGOh5-akVFpmDUhrvyEKvDd0WdXC5w/viewform?usp=send_form&fbclid=PAY2xjawJ1fMdleHRuA2FlbQIxMAABpx3Q7wOcuHck62_o1MxDiSL4t9xgwdieiIlpqnPDOlJq_Os3O6PPXIGwHj-8_aem_wA4wVXoXIjBcK6MhbY1FeQ"
+            }, 
+            stereo: {
+                name: "Stereo Club",
+                desc: `Stereo club is the finest Music club of our college where all music lovers come together to jam , perform and participate where it creates a vibrant music community.
+                       What do we do?
+                       We learn, perform, provide workshops , participate in different college, Jams, general meets moreover we create musical vibes around our college internally and externally. `,
+                contact:"CyrusTejas:7892134479",
+                instagram: "https://www.instagram.com/stereoclubnitte?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:" https://docs.google.com/forms/d/e/1FAIpQLSczhq4WynyUTzGNbHFo0VQwf5Y-4msevtjlDEkK-FUE0YRX7w/closedform?fbclid=PAY2xjawJ1YhZleHRuA2FlbQIxMAABpwjvIxPWX2f-WVPX9TBC9WV9wHPj_8W2s-gkWzYVmD7-HjpoMRZXsxidRNbD_aem_OpSLXsqNKM-GvFB9n1WY4Q",
+                linkedin:"https://www.linkedin.com/company/stereoclubnitte/ "
+            }, 
+            nss: {
+                name: "NSS union NMAMIT",
+                desc: `The National Service Scheme (NSS) fosters student involvement in community service and nation-building activities.
+                        It aims to develop students' personality through social service and instill a sense of responsibility.
+                        Volunteers participate in various initiatives like cleanliness drives, blood donation camps, and rural outreach.
+                        NSS encourages youth to be active, aware, and empathetic citizens of society.`,
+                contact:"Vishak : 93807 91560",
+                instagram: "https://www.instagram.com/nss_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            }, 
+            ncc: {
+                name: "NCC Naval Subunit Nmamit",
+                desc: `The National Cadet Corps (NCC) is a youth organization that promotes discipline, leadership, and patriotism.
+                        It provides military training to students and fosters a spirit of unity and selfless service.
+                        Cadets participate in drills, camps, adventure activities, and social initiatives.
+                        NCC molds young minds into responsible and confident future leaders of the nation.`,
+                contact:"Prateek Shetty : 8861474678",
+                instagram: "https://www.instagram.com/ncc_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            }, 
+            yujforlife: {
+                name: "Yuj For Life",
+                desc: "For being fit and healthy",
+                contact:"Rajendra: 94807 54869",
+                instagram: "https://www.instagram.com/joinyujforlife?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSdDKKBArCJCzTVgBTpdr0gnwoDkrWrO_vuNytxqlBPCyBUD_w/viewform?fbclid=PAY2xjawJ1fZpleHRuA2FlbQIxMAABpxfCRK1pC0NSJXru_dQtwqDH8XI7MIcDpVy-PmMrpqXGf-INi5lADPzc77CH_aem_tuTrFaiMwdcSUV8pkP2jMg"
+            }, 
+            tudar: {
+                name: "Tudar",
+                desc: "Tudar Club is dedicated to preserving and promoting the rich heritage of Tulunadu and the Tulu language. Our mission is to create awareness about Tulu culture, traditions, and history through various engaging activities. We organize cultural events, folk performances, language workshops, and heritage walks to celebrate and spread the essence of Tulunadu. Through our initiatives, we aim to connect people with their roots and ensure that the legacy of Tulu language and culture thrives for future generations.",
+                contact:"Shreya PV: 70224 59370",
+                instagram: "https://www.instagram.com/tudar_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website:"https://tudar.in/"
+            }, 
+            kalanjali: {
+                name: "Kalanjali",
+                desc: `Welcome to Kalanjali - The Dance Club of NMAMIT, where passion hits the floor!
+                        Ripple Factor Crew brings the heat with raw hip-hop energy.
+                        Mudra keeps tradition alive with every graceful step.
+                        Tiptoe tells stories through smooth, expressive moves.
+                        Three teams, one heartbeat — we move as one.`,
+                contact:"Abhishek:9686345433",
+                instagram: "https://www.instagram.com/kalanjali.nitte?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                linkedin  : "https://www.linkedin.com/company/kalanjali-club-nmamit" 
+            }, 
+            aero: {
+                name: "Aero Club",
+                desc: "Aero Club, Nitte aims to become a leading force in drone technology and innovation by fostering technical excellence, building a vibrant aviation community, and expanding its global influence. Our approach includes hosting RC aeromodelling workshops, engaging in outreach programs, and pursuing collaborative opportunities. We have a proven track record of success, having won numerous competitions and actively participating in prestigious events at IITs, where we have consistently achieved top honors",
+                contact:"Rithesh Shetty: 9731477827",
+                instagram: "https://www.instagram.com/aeroclubnitte?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website : "https://www.aeroclubnitte.com",
+                login: "https://docs.google.com/forms/d/e/1FAIpQLSdkpaOox6AwQJg4f903t83Cec2X6RKWxKcVWIGfDcjKtawLpw/viewform?fbclid=PAY2xjawJ1aG9leHRuA2FlbQIxMAABp93KRV89zDQhlo1s3MpxwqhtSn0cmKLJpGdXFEEzeJsQux0aUPe5wdBxbTam_aem_bnuoDl_mIjYZiiOPtntMKg" 
+            }, 
+            isiri: {
+                name: "Isiri Kannada Samithi",
+                desc: `ಕನ್ನಡದ ಹಿರಿಮೆಯನ್ನು ಹೆಚ್ಚಿಸಲು ಕೈ ಜೋಡಿಸೋಣ😊"
+                       ಕನ್ನಡದ ಸಂಸ್ಕೃತಿಯನ್ನು ಅರಿಯಲು ಮತ್ತು ಆಚರಿಸಲು ಸದಾ ಸಜ್ಜಾಗಿರುವ ನಮ್ಮ ನಿಮ್ಮೆಲ್ಲರ ಈ ಐಸಿರಿ ಕನ್ನಡ ಸಮಿತಿ 💛❤️`,
+                contact:"Surabhi : 7022589016",
+                instagram: "https://www.instagram.com/isiri_kannada_samithi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSc4v6vM-ftd09b-3XkG5voveYwxg9LMUq-4P9JV02Aw_0ptmQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAY2xjawJ1aNxleHRuA2FlbQIxMQABp6rkJGzhBbRoNZgVWOTYgYsAzd8UVGHLBhPdiHKpqtfsm52BQQIgctK-isMS_aem_nN0c26qf6RpTPK1xAHzWog"
+            }, 
+            rachana: {
+                name: "Rachana Club",
+                desc: `Art is never finished,only abandoned.
+                        Explore,live and breathe art with us!
+                        The Art Club of NMAMIT`,
+                contact:"Adarsh A S:8618977650",
+                instagram: "https://www.instagram.com/rachana_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSdfHxNGSqQNAsGWp73aiuCojj68kKzLNhzv8SKsZ-IHt200gg/viewform?pli=1&fbclid=PAY2xjawJ1f_dleHRuA2FlbQIxMAABp0M2iEK8UhPPJaUwhdgLHdHwidmIMEmzVOgJqs7g2yRsqQTDdiICZBWR1NRa_aem_HWaXNvkg1VCKyThHowNsKw"
+            }, 
+            authorcraft: {
+                name: "Authorcraft",
+                desc: `Authorcraft is the premier literary and cultural club of NMAMIT, dedicated to poetry, prose, stand-up, and scriptwriting. With a focus on nurturing creativity, the club hosts regular meetings and open mics, providing a platform for members to showcase and refine their talents. Its flagship initiatives include "Nirvana," an annual magazine featuring a compilation of members' works, and "Steal the Spotlight," NMAMIT's very own open mic contest, celebrating diverse voices and storytelling.`,
+                contact:"Aparna P Rao : 6364244719",
+                instagram: "https://www.instagram.com/authorcraft_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"  https://docs.google.com/forms/d/e/1FAIpQLScpINEyJkQn7twR2JaisSMT4RPNm1osaSIchp_1nzMZVxLECQ/viewform?fbclid=PAY2xjawJ1aXJleHRuA2FlbQIxMAABpwA25WcFClcpTM9Ykhjr_bXmdf3eGuXMinbcad98MvYcSNRN3nu22nKr92B8_aem_UfxsPj1pi6llL_LB1ox3Kw",
+                linkedin:" https://www.linkedin.com/company/authorcraft-nmamit/ "
+            }, 
+            annadaana: {
+                name: "Annadaana Club",
+                desc: "The Annadaana Foundation aims to fight hunger and minimize food waste through acts of kindness. The club ensures food rations are shared with those in need and provides rations to old age homes, orphanages, and special schools. It also offers emotional support to those facing difficulties.",
+                contact:"Shetty Shravya : 76192 79023",
+                instagram: "https://www.instagram.com/annadaana_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSdv79iiJZg0dVcccCOVNpynOgQhEy4OUdEfS89CQiCECUC3rw/viewform?fbclid=PAY2xjawJ1gG9leHRuA2FlbQIxMQABp-_cdZHefEUJ1ITOW1w3VJ-aCqFJfMP2X301gHdGnma-jaVVxtfzqsq6jnnU_aem_FaxZdXM_q4-viN0n6VIpHw"
+            }, 
+            finiteloop: {
+                name: "Finite Loop Club",
+                desc: "NMAMIT's premier coding community. Realizing ideas, inspiring the next.",
+                contact:"Satwik Prabhu : 9686356123",
+                instagram: "https://www.instagram.com/finiteloop_club_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website:" https://www.finiteloop.co.in/",
+                linkedin:"  https://www.linkedin.com/company/finite-loop-club/?fbclid=PAY2xjawJ1ahVleHRuA2FlbQIxMAABp3F8ZZ8W1S0Yzr0AiX-ZMeOEFWJv8aXr2M292nyz7z0vgjkLVXxtjc5LZJjw_aem_DsEn0DBoZDutUJKbJ70B0w "
+            }, 
+            saca: {
+                name: "SACA(Soft skills and Communication Association)",
+                desc: "Welcome to the world of effective communication and personal development! SACA (Soft Skill and Communication Association) is a vibrant association dedicated to enhancing soft skills and communication abilities 🚀",
+                contact:"Shaivi: 9972340078",
+                instagram: "https://www.instagram.com/saca_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                linkedin: "https://in.linkedin.com/company/sacanmamit"
+            }, 
+            samvaada: {
+                name: "Samvaada Club",
+                desc: ` Social Media Club of NMAMIT 
+                        Samvaada is a vibrant group of talented individuals who are deeply passionate about capturing and sharing the true essence of college life. As the official social media club of our college, they are committed to creating a dynamic and engaging online ecosystem that resonates with students. Their goal is to foster meaningful engagement, strengthen connections, and cultivate a sense of belonging among the college community, ensuring that everyone feels connected and involved in the shared college experience.`,
+                contact:"Saurabh Sunish: +91 94009 59342",
+                instagram: "https://www.instagram.com/samvaada_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            }, 
+            yrc: {
+                name: "Youth Red Cross NMAMIT",
+                desc: "Youth Red Cross (YRC) is a government organization dedicated to social service, actively engaging in various impactful events throughout the academic year. Our initiatives include Swachh Bharat Abhiyan, promoting cleanliness and environmental awareness, and Blood Donation Drives, encouraging voluntary blood donation to save lives. We celebrate Ganeshotsav with devotion and community involvement, conduct First Aid Training Programs to equip individuals with essential life-saving skills, and observe Youth Red Cross Day with activities that highlight our mission. Additionally, we organize visits to special schools and old age homes, fostering compassion and support for different sections of society. Our club also marks Yoga Day, promoting physical and mental well-being among students and the community. A proud milestone for us this year is that NMAMIT YRC Club is participating in the State Level YRC Camp in Bangalore in 2025, representing our commitment to humanitarian efforts at a broader level. Through these initiatives, we strive to make a meaningful difference in society while inspiring youth to take up social responsibility.",
+                contact:"Rashmi : 82173 67669",
+                instagram: "https://www.instagram.com/yrc_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSdYWkSW3Mi-CDZZU_G4sSHN1kZ9p5yszNkGXiBRd6L_gpa76g/closedform?fbclid=PAY2xjawJ1e1RleHRuA2FlbQIxMAABpxfCRK1pC0NSJXru_dQtwqDH8XI7MIcDpVy-PmMrpqXGf-INi5lADPzc77CH_aem_tuTrFaiMwdcSUV8pkP2jMg "
+            }, 
+            csi: {
+                name: "Computer Society of India (NMAMIT STUDENT BRANCH)",
+                desc: "The Computer Society of India (CSI) is a premier hub for tech enthusiasts, bridging academia and industry through innovation, research, and knowledge exchange.The Computer Society of India (CSI) is a thriving hub for tech innovators, fostering growth through dynamic events, industry collaborations, and cutting-edge learning experiences. With mentorship, certifications, and hands-on challenges, CSI empowers the next generation of technology leaders.",
+                contact:" Ansh:6284717464",
+                instagram: "https://www.instagram.com/csi_nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                website:"https://csinmamit.in/?fbclid=PAZXh0bgNhZW0CMTEAAafWWxRsTw2YZ_J5ks7NEH2gWGL_5kjKeI90bXuivaBitl5Y9OTDKUyuAiXfbA_aem_sqq-G0PcPrv-K7s-cbdrVw",
+                linkedin:"https://in.linkedin.com/company/csi-student-branch-nmamit"
+            }, 
+            ieee: {
+                name: "IEEE Student Branch NMAMIT",
+                desc: `IEEE (Institute of Electrical and Electronics Engineers) is a global organization dedicated to advancing technology for humanity.
+                        Our student chapter hosts technical workshops, hackathons, and industry talks to foster innovation.
+                        We aim to bridge the gap between academia and industry through hands-on learning and networking.
+                        Join us to explore cutting-edge tech and collaborate with passionate peers!`,
+                contact:"Kishan K : 94966 05217",
+                instagram: "https://www.instagram.com/ieee.nmamit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                linkedin:"https://www.linkedin.com/company/ieee-nmamit/?fbclid=PAY2xjawJ1eSJleHRuA2FlbQIxMQABp7sgGbVqQBlerro0DmDeIkA7gLQ5YJfP_P8EAlt3uIFD8ZKnqVexbPQfjJtA_aem_E3rn5xZTj352PWG5ZNrC9Q",
+                login:"https://docs.google.com/forms/d/e/1FAIpQLSczbplX728ypFxZVjurVK4W6p3Th29VpcQ9Xq_GbYhhxOXAEw/viewform?pli=1&fbclid=PAY2xjawJ1eXdleHRuA2FlbQIxMQABpwh42kbZUbRHhRxuRDG-qSu4Or3BX_JphoD8Zh1tgkm-7PJe2kxdWXUS-c8s_aem_LhhB0T12MC1G13uFIoMUOw",
+                website:"https://ieeenmamit.vercel.app/"
+            }
+        };
+
+        if (clubData[club]) {
+            const data = clubData[club];
+            document.getElementById("club-name").innerText = data.name;
+            document.getElementById("club-description").innerText = data.desc;
+            document.getElementById("club-contact").innerText = data.contact;
+            
+            // Instagram
+            const instagramLink = document.getElementById("club-instagram");
+            if (data.instagram) {
+                instagramLink.href = data.instagram;
+                instagramLink.style.display = "inline-block"; // Make it visible if link is present
+            } else {
+                instagramLink.style.display = "none"; // Hide if no link is provided
+            }
+
+            // LinkedIn
+            const linkedinLink = document.getElementById("club-linkedin");
+            if (data.linkedin) {
+                linkedinLink.href = data.linkedin;
+                linkedinLink.style.display = "inline-block"; // Make it visible if link is present
+            } else {
+                linkedinLink.style.display = "none"; // Hide if no link is provided
+            }
+
+            // Login
+            const loginLink = document.getElementById("club-login");
+            if (data.login) {
+                loginLink.href = data.login;
+                loginLink.style.display = "inline-block"; // Make it visible if link is present
+            } else {
+                loginLink.style.display = "none"; // Hide if no link is provided
+            }
+
+            // Website
+            const websiteLink = document.getElementById("club-website");
+            if (data.website) {
+                websiteLink.href = data.website;
+                websiteLink.style.display = "inline-block"; // Make it visible if link is present
+            } else {
+                websiteLink.style.display = "none"; // Hide if no link is provided
+            }
+
+        } else {
+            document.body.innerHTML = `
+                <h1>Club Not Found</h1>
+                <p>We couldn't find the club you're looking for.</p>
+                <a href="index.html">Back to Home</a>
+            `;
+        }
+
+    for (let i = 1; i <= imageCount; i++) {
+    const img = document.createElement("img");
+    img.src = `${folderPath}event${i}.jpg`;
+    img.alt = `Event Image ${i}`;
+    img.className = "fade-in-image";
+
+    // Check if image exists before appending (optional)
+    img.onload = () => eventGallery.appendChild(img);
+    img.onerror = () => {}; // Fail silently if image doesn't exist
+}
+
+    </script>
+
+</body>
+</html>
